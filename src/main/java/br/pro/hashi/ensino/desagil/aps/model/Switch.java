@@ -11,10 +11,6 @@ public class Switch implements Emitter {
         signal = true;
     }
 
-    public void turnOff() {
-        signal = false;
-    }
-
     @Override
     public boolean read() {
         return signal;

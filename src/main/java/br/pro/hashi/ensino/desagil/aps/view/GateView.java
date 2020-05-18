@@ -19,9 +19,8 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
     private final JCheckBox checkBox2;
 
     private final Image image;
+    private final Light light = new Light(255, 0, 0, 0, 0, 0);
     private Color color;
-
-    private Light light = new Light(255, 0, 0, 0, 0, 0);
 
 
     public GateView(Gate gate) {
@@ -32,12 +31,11 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         checkBox2 = new JCheckBox("");
 
         if (gate.getInputSize() == 2) {
-            add(checkBox1, 30, 70, 150, 25);
-            add(checkBox2, 30, 150, 150, 25);
+            add(checkBox1, 30, 80, 150, 25);
+            add(checkBox2, 30, 136, 150, 25);
         } else {
             add(checkBox1, 30, 110, 150, 25);
         }
-        ;
 
 //        add(checkBoxresult, 273, 110, 120, 25);
 
@@ -57,8 +55,8 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
     }
 
     private void update() {
-        Boolean entrada1;
-        Boolean entrada2;
+        boolean entrada1;
+        boolean entrada2;
 
         entrada1 = checkBox1.isSelected();
         entrada2 = checkBox2.isSelected();
@@ -72,28 +70,21 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         if (entrada1) {
             switch1.turnOn();
         }
-        ;
         this.gate.connect(0, switch1);
 
         if (this.gate.getInputSize() > 1) {
             if (entrada2) {
                 switch2.turnOn();
             }
-            ;
             this.gate.connect(1, switch2);
         }
-        ;
 
-
-        Boolean result = this.gate.read();
 
         light.connect(0, this.gate);
 
         color = light.getColor();
         repaint();
     }
-
-    ;
 
     @Override
     public void actionPerformed(ActionEvent event) {

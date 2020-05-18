@@ -4,7 +4,6 @@ public class XnorGate extends Gate {
     private final NandGate nand1;
     private final NandGate nandTop;
     private final NandGate nandBottom;
-    private final NandGate nand2;
     private final NandGate nand3;
 
 
@@ -14,7 +13,7 @@ public class XnorGate extends Gate {
         nand1 = new NandGate();
         nandTop = new NandGate();
         nandBottom = new NandGate();
-        nand2 = new NandGate();
+        NandGate nand2 = new NandGate();
         nand3 = new NandGate();
 
 

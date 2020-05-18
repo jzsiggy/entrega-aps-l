@@ -21,7 +21,7 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
     private final Image image;
     private Color color;
 
-    private Light light = new Light(255, 0, 0);
+    private Light light = new Light(255, 0, 0, 0, 0, 0);
 
 
     public GateView(Gate gate) {
@@ -116,7 +116,11 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
             System.out.println("INSIDE");
 
             // ...então abrimos a janela seletora de cor...
-            light.setColor(JColorChooser.showDialog(this, null, color));
+            if (this.gate.read()) {
+                light.setColor(JColorChooser.showDialog(this, null, color));
+            } else {
+                light.setOffColor(JColorChooser.showDialog(this, null, color));
+            }
 
             // ...e chamamos repaint para atualizar a tela.
             update();
